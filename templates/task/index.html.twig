@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+
+<section class="taskList">
+
+    {% for task in taskList %}
+        
+        <article>
+            <h2>{{ task.title }}</h2>
+            <div class="metadata" style="color: lightgrey; margin-bottom: 5px;">Créee le {{ task.createdAt | date('d/m/Y') }} à {{ task.createdAt | date('H:i') }} </div>
+            <div class="content" style="margin-bottom: 5px; font-size: 16px;">
+                {{ task.content | raw }}
+            </div>
+            <div class="content" style="margin-bottom: 10px; font-weight: bold;">
+                {{ task.statetype | raw }}
+            </div>
+            <a href="{{ path('editTask', {'id' : task.id}) }}" class="btn btn-primary">Modifier la tâche</a>
+            <a href="{{ path('deleteTask', {'id' : task.id}) }}" class="btn btn-danger">Supprimer</a>
+            
+        </article>
+        <hr>
+
+    {% endfor %}
+
+    
+
+
+</section>
+
+{% endblock %}

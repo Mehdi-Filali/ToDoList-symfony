@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<section class="taskList">
+
+        
+        <article>
+            <h2>{{ task.title }}</h2>
+            <div class="metadata">Créee le {{ task.createdAt | date('d/m/Y') }} à {{ task.createdAt | date('H:i') }} </div>
+            <div class="content">
+                {{ task.content | raw }}   
+            </div>
+            <div class="content">
+                {{ task.statetype | raw }}
+            </div>
+            <a href="{{ path('editTask', {'id' : task.id}) }}" class="btn btn-primary">Modifier la tâche</a>
+        </article>
+
+</section>
+
+{% endblock %}
